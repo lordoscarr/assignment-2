@@ -28,7 +28,7 @@
 }
 
 
-.login-container {
+.container {
     max-width: 500px;
     width: 90%;
     margin: auto;
@@ -108,4 +108,20 @@
 
 .translucent-form-overlay input::placeholder {
     color: #adadad;
+}
+
+.weather-box {
+    margin-top: 20px;
+    background: rgba(0,0,0,0.6);
+    color: #fefefe;
+    padding: 10px;
+}
+
+.city-name {
+    text-transform: uppercase;
+    font-weight: lighter;
+}
+
+.weather-icon {
+    font-size: 64px!important;
 }
