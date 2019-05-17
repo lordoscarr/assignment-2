@@ -19,14 +19,20 @@
     </header>
 
     <main class="wrapper">
-        <nav class="navbar">
-            <a class="navbar-item navbar-active">Start</a>
-            <a class="navbar-item">Movies</a>
-            <a class="navbar-item">Settings</a>
-        </nav>
-
-        <section class="container">
-
+        <section class="login-container">
+            <div class="translucent-form-overlay">
+                <form>
+                    <h3>What's your name?</h3>
+                    <div class="row columns">
+                        <label>Username
+                            <input class="username-box" type="text" name="keyword" placeholder="Oscar">
+                        </label>
+                    </div>
+                    <button type="button" class="primary button expanded register-button">
+                        Let's go
+                    </button>
+                </form>
+            </div>
         </section>
     </main>
 
@@ -36,7 +42,7 @@
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/foundation.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/login.js"></script>
 
 </body>
 

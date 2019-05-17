@@ -1,8 +1,9 @@
 
-
+.html {
+    background: #5c5c5c;
+}
 .wrapper {
     width: 100%;
-    background: url('/img/bg1.jpg');
 }
 
 .bg-img {
@@ -27,7 +28,7 @@
 }
 
 
-.container {
+.login-container {
     max-width: 500px;
     width: 90%;
     margin: auto;
@@ -38,6 +39,43 @@
     color: #fefefe;
     text-align: center;
     margin-top: 50px;
+}
+
+.navbar {
+    max-width: 500px;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.navbar-item {
+    color: #fefefe;
+    background: rgba(0,0,0,0.6);
+    padding: 10px;
+    text-transform: lowercase;
+}
+
+.navbar-item:hover {
+    color: #fefefe;
+    padding-bottom: 6px;
+    border-bottom: #fefefe solid 4px;
+}
+
+.navbar-active {
+    padding-bottom: 6px;
+    border-bottom: yellowgreen solid 4px;
+}
+
+.footer {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: #fefefe;
 }
 
 .translucent-form-overlay {
@@ -57,17 +95,17 @@
 }
 
 .translucent-form-overlay input, .translucent-form-overlay select {
-    color: #8a8a8a;
+    color: #5c5c5c;
 }
 
 .translucent-form-overlay input::-webkit-input-placeholder {
-    color: #8a8a8a;
+    color: #adadad;
 }
 
 .translucent-form-overlay input:-ms-input-placeholder {
-    color: #8a8a8a;
+    color: #adadad;
 }
 
 .translucent-form-overlay input::placeholder {
-    color: #8a8a8a;
+    color: #adadad;
 }
