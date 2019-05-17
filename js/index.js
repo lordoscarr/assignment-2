@@ -26,6 +26,7 @@ function showPosition(pos) {
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log('success!', xhr);
+            
         } else {
             console.log('The request failed!');
         }
