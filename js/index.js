@@ -19,14 +19,14 @@ $(function () {
 });
 
 function showPosition(pos) {
-    let url = 'api.openweathermap.org/data/2.5/weather?lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude;
+    let url = 'https://api.openweathermap.org/data/2.5/weather?lat=' + pos.coords.latitude + '&lon=' + pos.coords.longitude + '&appid=' + weatherKey;
 
     var xhr = new XMLHttpRequest();
 
     xhr.onload = function () {
         if (xhr.status >= 200 && xhr.status < 300) {
             console.log('success!', xhr);
-            
+
         } else {
             console.log('The request failed!');
         }
