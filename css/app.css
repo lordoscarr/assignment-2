@@ -94,6 +94,11 @@
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+.translucent-form-overlay h3 {
+    text-transform: lowercase;
+    font-weight: lighter;
+}
+
 .translucent-form-overlay .columns.row {
     display: block;
 }
@@ -235,4 +240,63 @@
 .media-selection-card h3 {
     font-weight: lighter;
     text-transform: lowercase;
+}
+
+.file-input {
+    margin-top: 20px;
+}
+
+.save-button {
+    padding: 10px;
+    width: 100%;
+    background: rgba(154, 205, 50, 0.6);
+    border: none;
+    cursor: pointer;
+    color: #fefefe;
+}
+
+.save-button:hover {
+    background: rgba(154, 205, 50, 0.8);
+}
+
+.upload-form label {
+    color: #fefefe;
+}
+
+.saved-media-type-card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    color: #fefefe;
+}
+
+.saved-media-type-card select {
+    margin: 0px;
+}
+
+.saved-media-type-card h3 {
+    font-weight: lighter;
+    text-transform: lowercase;
+}
+
+.file-item {
+    background: rgba(0,0,0,0.6);
+    margin-top: 2px;
+    padding: 10px;
+    color: #fefefe;
+}
+
+.file-item p {
+    margin: 0px;
+}
+
+.file-title-text {
+    font-size: 20px;
+}
+
+.type-text {
+    text-transform: uppercase;
+}
+
+.time-text {
+    color: yellowgreen;
 }
