@@ -57,9 +57,9 @@ function updateLibraryPage() {
                 "</div>" +
                 "</a>" +
                 "<div class='movie-buttons'>" +
-                "<a class='favorite-button' onclick='addFavorite(" + index + ")'>set favorite</a>" +
+                "<a class='favorite-button' onclick='addFavoriteFromWatchlist(" + index + ")'>set favorite</a>" +
                 "<a class='watchlist-button' onclick='removeFromWatchlist(" + index + ")'>remove from watchlist</a>" +
-                "</div>" + 
+                "</div>" +
                 "</div>"
             );
             index++;
@@ -126,11 +126,11 @@ function searchMovies(searchstring) {
     xhr.send();
 }
 
-function addFavorite(movieIndex){
+function addFavorite(movieIndex) {
     let movie = movies[movieIndex];
     let user = JSON.parse(localStorage.getItem(username));
-    if(!user){
-        user = {watchlist: [], favorite: ''}
+    if (!user) {
+        user = { watchlist: [], favorite: '' }
     }
     user.favorite = movie.Title;
     localStorage.setItem(username, JSON.stringify(user));
@@ -138,11 +138,20 @@ function addFavorite(movieIndex){
     console.log('favorite: ' + JSON.parse(localStorage.getItem(username)).favorite);
 }
 
-function addToWatchlist(movieIndex){
+function addFavoriteFromWatchlist(movieIndex){
+    let user = JSON.parse(localStorage.getItem(username));
+    let movie = user.watchlist[movieIndex];
+    user.favorite = movie.Title;
+    localStorage.setItem(username, JSON.stringify(user));
+    updateLibraryPage();
+    console.log('favorite: ' + JSON.parse(localStorage.getItem(username)).favorite);
+}
+
+function addToWatchlist(movieIndex) {
     let movie = movies[movieIndex];
     let user = JSON.parse(localStorage.getItem(username));
-    if(!user){
-        user = {watchlist: [], favorite: ''}
+    if (!user) {
+        user = { watchlist: [], favorite: '' }
     }
     user.watchlist.push(movie);
     localStorage.setItem(username, JSON.stringify(user));
@@ -150,7 +159,7 @@ function addToWatchlist(movieIndex){
     console.log('watchlist size: ' + user.watchlist.length);
 }
 
-function removeFromWatchlist(movieIndex){
+function removeFromWatchlist(movieIndex) {
     let user = JSON.parse(localStorage.getItem(username));
     let movie = user.watchlist[movieIndex];
     console.log('removing ' + movie.Title);

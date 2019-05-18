@@ -35,7 +35,7 @@
 }
 
 .login-title {
-    padding: 20px;
+    padding: 10px;
     color: #fefefe;
     text-align: center;
     margin-top: 50px;
@@ -89,7 +89,7 @@
 .translucent-form-overlay {
     margin-top: 20px;
     width: 100%;
-    padding: 20px;
+    padding: 10px;
     color: #fefefe;
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -219,4 +219,20 @@
 .empty-item {
     color: #fefefe;
     text-align: left;
+}
+
+.media-selection-card {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 10px;
+    margin-top: 20px;
+    color: #fefefe;
+}
+
+.media-selection-card select {
+    margin: 0px;
+}
+
+.media-selection-card h3 {
+    font-weight: lighter;
+    text-transform: lowercase;
 }

@@ -26,7 +26,26 @@
         </nav>
 
         <section class="container">
+            <nav class="navbar navbar-2">
+                <a class="navbar-item no-background navbar-active menu-upload" onclick="showUpload()">Upload</a>
+                <a class="navbar-item no-background menu-mediaplayer" onclick="showMediaPlayer()">Media</a>
+            </nav>
 
+            <div class="upload-page">
+                <div class="media-selection-card">
+                    <h3>Select format</h3>
+                    <select>
+                        <option value="" disabled selected>- Pick a format -</option>
+                        <option value="video">video</option>
+                        <option value="audio">audio</option>
+                        <option value="photo">photo</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mediaplayer-page">
+
+            </div>
         </section>
     </main>
 
