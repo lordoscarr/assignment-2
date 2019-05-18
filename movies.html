@@ -26,13 +26,40 @@
         </nav>
 
         <section class="container">
+            <nav class="navbar navbar-2">
+                <a class="navbar-item no-background navbar-active menu-search" onclick="showSearch()">Search</a>
+                <a class="navbar-item no-background menu-library" onclick="showLibrary()">Library</a>
+            </nav>
 
+            <div class="search-page">
+                <div class="translucent-form-overlay">
+                    <form>
+                        <div class="row columns search-card">
+                            <input class="search-box" name="s" type="text" placeholder="Movie title">
+                            <button type="submit" class="primary button expanded search-button">
+                                Search
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="result-card">
+                </div>
+            </div>
+            <div class="library-page invisible">
+                <div class="favorite-card">
+                    <h3>Favorite movie</h3>
+                    <p class="favorite-title"></p>
+                </div>
+
+                <div class="watchlist-card">
+                    <h3>Watchlist</h3>
+                    <div class="watchlist-movies">
+                        
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
-
-    <footer class="footer">
-        <p>Oscar Andersson | 2019</p>
-    </footer>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/foundation.js"></script>

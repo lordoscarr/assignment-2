@@ -17,7 +17,9 @@ function registerUser(){
     if(username && username.length > 0){
         console.log('username: ' + username);
         localStorage.setItem('username', username);
+        window.location.href = "index.html";
     }else{
         console.log('invalid input');
+        alert('Invalid name, try again.');
     }
 }

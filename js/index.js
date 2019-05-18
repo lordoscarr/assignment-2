@@ -32,6 +32,7 @@ function showPosition(pos) {
             $('.temp-text').html("<i class='owf owf-" + weather.weather[0].id +"'></i> " + Math.round(weather.main.temp) + '°C');
             $('.temp-desc').text(weather.weather[0].description);
         } else {
+            $('.temp-desc').text('Fetching weather data failed.');
             console.log('The request failed!');
         }
     };
