@@ -74,7 +74,7 @@ function updateLibraryPage() {
 
 let movies = [];
 function searchMovies(searchstring) {
-    let url = 'http://www.omdbapi.com/?apikey=' + movieKey + '&s=' + searchstring.replace(' ', '+') + '&type=movie';
+    let url = 'https://www.omdbapi.com/?apikey=' + movieKey + '&s=' + searchstring.replace(' ', '+') + '&type=movie';
 
     var xhr = new XMLHttpRequest();
 
