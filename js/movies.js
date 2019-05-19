@@ -4,7 +4,7 @@ let username;
 $(function () {
     username = localStorage.getItem('username');
 
-    if (username) {
+    if (username && username.length > 0) {
         console.log('user exist: ' + username);
     } else {
         console.log('no user');
@@ -35,7 +35,7 @@ function showLibrary() {
 
 function updateLibraryPage() {
     let user = JSON.parse(localStorage.getItem(username));
-    if (user.favorite) {
+    if (user && user.favorite) {
         $('.favorite-title').text(user.favorite);
     } else {
         $('.favorite-title').text('No favorite movie.')

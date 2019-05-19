@@ -3,7 +3,7 @@ let weatherKey = 'abc78c421fa7510a6486356657bcb876';
 $(function () {
     let username = localStorage.getItem('username');
 
-    if (username) {
+    if (username && username.length > 0) {
         console.log('user exist: ' + username);
     } else {
         console.log('no user');
