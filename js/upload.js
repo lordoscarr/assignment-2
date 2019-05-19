@@ -57,7 +57,7 @@ function getMedia() {
         //download all
         console.log('showing all media types');
         $.ajax({
-            url: 'http://ddwap.mah.se/ah7379/server.php?action=getMedia', // Till adressen "server.php"
+            url: 'https://ddwap.mah.se/ah7379/server.php?action=getMedia', // Till adressen "server.php"
             type: 'GET', // Med metoden "post"
             dataType: "JSON", // Hur vi ska tolka den data vi får tillbaka (som JSON)
             cache: false, // Vi tillåter inte att webbläsaren att cacha några resultat
@@ -81,14 +81,13 @@ function getMedia() {
             console.log(data);
         }).fail(function (data) {
             // Om vi får ett misslyckat svar
-            alert('Oh no! Looks like the upload failed!')
             console.log('failed.')
             console.log(data.responseText);
         });
     } else {
         console.log('showing media type: ' + type);
         $.ajax({
-            url: 'http://ddwap.mah.se/ah7379/server.php?action=getMedia&type=' + type, // Till adressen "server.php"
+            url: 'https://ddwap.mah.se/ah7379/server.php?action=getMedia&type=' + type, // Till adressen "server.php"
             type: 'GET', // Med metoden "post"
             dataType: "JSON", // Hur vi ska tolka den data vi får tillbaka (som JSON)
             cache: false, // Vi tillåter inte att webbläsaren att cacha några resultat
@@ -100,7 +99,7 @@ function getMedia() {
             if (data.files && data.files.length > 0) {
                 data.files.forEach(file => {
                     $('.media-list').append(
-                        "<a href='http://ddwap.mah.se/ah7379/" + file.path + "'>" +
+                        "<a href='https://ddwap.mah.se/ah7379/" + file.path + "'>" +
                         "<div class='file-item' >" +
                         "<p class='file-title-text'>" + file.title + "</p>" +
                         "<p class='type-text'>" + file.type + " <span class='time-text'> " + file.timestamp + "</span></p>" +
@@ -112,7 +111,6 @@ function getMedia() {
             console.log(data);
         }).fail(function (data) {
             // Om vi får ett misslyckat svar
-            alert('Oh no! Looks like the upload failed!')
             console.log('failed.')
             console.log(data.responseText);
         });
