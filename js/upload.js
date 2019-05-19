@@ -1,5 +1,15 @@
 $(function () {
     document.querySelector('.saved-type-select').addEventListener('change', getMedia);
+
+    username = localStorage.getItem('username');
+
+    if (username && username.length > 0) {
+        console.log('user exist: ' + username);
+    } else {
+        console.log('no user');
+        window.location.href = "login.html";
+    }
+
     getMedia();
 });
 
@@ -36,7 +46,8 @@ $(".upload-form").submit(function (e) {
             processData: false // Vi tillåter inte att jQuery att processa vår data (som strängar)
         }).done(function (data) {
             // Om vi får ett lyckat svar
-            alert('Nice! Your file has been uploaded!')
+            alert('Nice! Your file has been uploaded!');
+            window.location.href = 'upload.html';
             console.log('success.')
             console.log(data);
         }).fail(function (data) {
