@@ -42,7 +42,7 @@ function updateLibraryPage() {
     }
 
     $('.watchlist-movies').html('');
-    if (user.watchlist && user.watchlist.length > 0) {
+    if (user && user.watchlist && user.watchlist.length > 0) {
         let index = 0;
         user.watchlist.forEach(movie => {
             $('.watchlist-movies').append(
