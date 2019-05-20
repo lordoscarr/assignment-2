@@ -34,7 +34,7 @@ $(".upload-form").submit(function (e) {
     // Hämtar formulärsdata (värde från drop-down menyn, samt filen)
     var formData = new FormData(this);
 
-    if ($('.file-input').val() != '' && $('.title-box').length > 0 && $('.type-select').val() != 'none') {
+    if ($('.file-input').val() != '' && $('.title-box').val().length > 0 && $('.type-select').val() != 'none') {
         // Gör ett ajax-anrop
         $.ajax({
             url: $(this).attr("action"), // Till adressen "server.php"
