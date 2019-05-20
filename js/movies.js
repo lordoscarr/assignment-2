@@ -76,54 +76,56 @@ let movies = [];
 function searchMovies(searchstring) {
     let url = 'https://www.omdbapi.com/?apikey=' + movieKey + '&s=' + searchstring.replace(' ', '+') + '&type=movie';
 
-    var xhr = new XMLHttpRequest();
-
-    xhr.onload = function () {
-        if (xhr.status >= 200 && xhr.status < 300) {
-            console.log('success!', xhr.response);
-            let response = JSON.parse(xhr.response);
-            if (response.Error) {
-                //Error, no movie found probably
-                console.log(response.Error)
-                $('.result-card').html('');
+    $.ajax({
+        url: url, // Till adressen "server.php"
+        type: 'GET', // Med metoden "post"
+        dataType: "JSON", // Hur vi ska tolka den data vi får tillbaka (som JSON)
+        cache: false, // Vi tillåter inte att webbläsaren att cacha några resultat
+        contentType: false, // Vi vill inte att jQuery ska bestämma hur vårt innehåll ska tolkas
+        processData: false // Vi tillåter inte att jQuery att processa vår data (som strängar)
+    }).done(function (data) {
+        if (data.Error) {
+            $('.result-card').html('');
+            $('.result-card').append(
+                "<div class='error-item'>" +
+                "<p class='error-text'>You did an oopsie! No movie could be found.</p>" +
+                "</div>"
+            );
+            console.log('failed.')
+        } else {
+            movies = data.Search;
+            $('.result-card').html('');
+            let index = 0;
+            movies.forEach(movie => {
+                if (movie.Poster == 'N/A') {
+                    movie.Poster = 'img/placeholder.jpg';
+                }
                 $('.result-card').append(
-                    "<div class='error-item'>" +
-                    "<p class='error-text'>Error! No movie could be found.</p>" +
+                    "<div class='movie-item' >" +
+                    "<img class='movie-img' src='" + movie.Poster + "' >" +
+                    "<div class='movie-info'>" +
+                    "<p class='movie-title'>" + movie.Title + "</p>" +
+                    "<p class='movie-year'>" + movie.Year + "</p>" +
+                    "</div>" +
+                    "</div>" +
+                    "<div class='movie-buttons'>" +
+                    "<a class='favorite-button' onclick='addFavorite(" + index + ")'>set favorite</a>" +
+                    "<a class='watchlist-button' onclick='addToWatchlist(" + index + ")'>add to watchlist</a>" +
                     "</div>"
                 );
-            } else {
-                movies = response.Search;
-                $('.result-card').html('');
-                let index = 0;
-                movies.forEach(movie => {
-                    if (movie.Poster == 'N/A') {
-                        movie.Poster = 'img/placeholder.jpg';
-                    }
-                    $('.result-card').append(
-                        "<div class='movie-item' >" +
-                        "<img class='movie-img' src='" + movie.Poster + "' >" +
-                        "<div class='movie-info'>" +
-                        "<p class='movie-title'>" + movie.Title + "</p>" +
-                        "<p class='movie-year'>" + movie.Year + "</p>" +
-                        "</div>" +
-                        "</div>" +
-                        "<div class='movie-buttons'>" +
-                        "<a class='favorite-button' onclick='addFavorite(" + index + ")'>set favorite</a>" +
-                        "<a class='watchlist-button' onclick='addToWatchlist(" + index + ")'>add to watchlist</a>" +
-                        "</div>"
-                    );
-                    index++;
-                });
-            }
-            console.log(response);
-        } else {
-            console.log('failed');
-
+                index++;
+            });
         }
-    };
-
-    xhr.open('GET', url);
-    xhr.send();
+    }).fail(function (data) {
+        // Om vi får ett misslyckat svar
+        $('.result-card').html('');
+        $('.result-card').append(
+            "<div class='error-item'>" +
+            "<p class='error-text'>Error! Something's wrong with the internet.</p>" +
+            "</div>"
+        );
+        console.log('failed.');
+    });
 }
 
 function addFavorite(movieIndex) {
@@ -138,7 +140,7 @@ function addFavorite(movieIndex) {
     console.log('favorite: ' + JSON.parse(localStorage.getItem(username)).favorite);
 }
 
-function addFavoriteFromWatchlist(movieIndex){
+function addFavoriteFromWatchlist(movieIndex) {
     let user = JSON.parse(localStorage.getItem(username));
     let movie = user.watchlist[movieIndex];
     user.favorite = movie.Title;

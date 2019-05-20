@@ -6,7 +6,6 @@ $(function () {
     if (username && username.length > 0) {
         console.log('user exist: ' + username);
     } else {
-        console.log('no user');
         window.location.href = "login.html";
     }
 
@@ -48,13 +47,9 @@ $(".upload-form").submit(function (e) {
             // Om vi får ett lyckat svar
             alert('Nice! Your file has been uploaded!');
             window.location.href = 'upload.html';
-            console.log('success.')
-            console.log(data);
         }).fail(function (data) {
             // Om vi får ett misslyckat svar
             alert('Oh no! Looks like the upload failed!')
-            console.log('failed.')
-            console.log(data.responseText);
         });
     } else {
         alert("Whoops! Looks like you didn't fill out the form properly. Try again!");
@@ -66,7 +61,6 @@ function getMedia() {
     let type = $('.saved-type-select').val();
     if (type == 'all') {
         //download all
-        console.log('showing all media types');
         $.ajax({
             url: 'https://ddwap.mah.se/ah7379/server.php?action=getMedia', // Till adressen "server.php"
             type: 'GET', // Med metoden "post"
@@ -76,7 +70,6 @@ function getMedia() {
             processData: false // Vi tillåter inte att jQuery att processa vår data (som strängar)
         }).done(function (data) {
             // Om vi får ett lyckat svar
-            console.log('success.');
             if (data.files && data.files.length > 0) {
                 data.files.forEach(file => {
                     $('.media-list').append(
@@ -89,14 +82,11 @@ function getMedia() {
                     );
                 });
             }
-            console.log(data);
         }).fail(function (data) {
             // Om vi får ett misslyckat svar
-            console.log('failed.')
-            console.log(data.responseText);
+            console.log(data);
         });
     } else {
-        console.log('showing media type: ' + type);
         $.ajax({
             url: 'https://ddwap.mah.se/ah7379/server.php?action=getMedia&type=' + type, // Till adressen "server.php"
             type: 'GET', // Med metoden "post"
@@ -106,7 +96,6 @@ function getMedia() {
             processData: false // Vi tillåter inte att jQuery att processa vår data (som strängar)
         }).done(function (data) {
             // Om vi får ett lyckat svar
-            console.log('success.');
             if (data.files && data.files.length > 0) {
                 data.files.forEach(file => {
                     $('.media-list').append(
@@ -119,11 +108,9 @@ function getMedia() {
                     );
                 });
             }
-            console.log(data);
         }).fail(function (data) {
             // Om vi får ett misslyckat svar
-            console.log('failed.')
-            console.log(data.responseText);
+            console.log(data);
         });
     }
 }
