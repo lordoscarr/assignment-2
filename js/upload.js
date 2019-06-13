@@ -1,5 +1,6 @@
 $(function () {
     document.querySelector('.saved-type-select').addEventListener('change', getMedia);
+    document.querySelector('.type-select').addEventListener('change', updateButton);
 
     username = localStorage.getItem('username');
 
@@ -56,6 +57,12 @@ $(".upload-form").submit(function (e) {
     }
 });
 
+function updateButton() {
+    let type = $('.type-select').val();
+    $('.file-input').attr("accept", type + "/*");
+    console.log('updated accept attribute to ' + type);
+}
+
 function getMedia() {
     $('.media-list').html('');
     let type = $('.saved-type-select').val();
@@ -72,11 +79,28 @@ function getMedia() {
             // Om vi får ett lyckat svar
             if (data.files && data.files.length > 0) {
                 data.files.forEach(file => {
+                    let mediaHtml;
+                    let fileExtension = file.path.split('.').pop();
+                    if (file.type == 'photo') {
+                        mediaHtml = "<img class='media-img' src='http://ddwap.mah.se/ah7379/" + file.path + "' />"
+                    } else if (file.type == 'video') {
+                        mediaHtml = "<video controls>" +
+                            "<source src='http://ddwap.mah.se/ah7379/" + file.path + "' type='video/" + fileExtension + "'>" +
+                            "Your browser does not support the video tag." +
+                            "</video>"
+                    } else if (file.type == 'audio') {
+                        mediaHtml = "<audio controls>" +
+                            "<source src='http://ddwap.mah.se/ah7379/" + file.path + "' type='audio/" + fileExtension + "'>" +
+                            "Your browser does not support the audio element." +
+                            "</audio>"
+                    }
+
                     $('.media-list').append(
                         "<a href='http://ddwap.mah.se/ah7379/" + file.path + "'>" +
                         "<div class='file-item' >" +
                         "<p class='file-title-text'>" + file.title + "</p>" +
                         "<p class='type-text'>" + file.type + " <span class='time-text'> " + file.timestamp + "</span></p>" +
+                        mediaHtml + 
                         "</div>" +
                         "</a>"
                     );
@@ -99,12 +123,10 @@ function getMedia() {
             if (data.files && data.files.length > 0) {
                 data.files.forEach(file => {
                     $('.media-list').append(
-                        "<a href='https://ddwap.mah.se/ah7379/" + file.path + "'>" +
                         "<div class='file-item' >" +
                         "<p class='file-title-text'>" + file.title + "</p>" +
                         "<p class='type-text'>" + file.type + " <span class='time-text'> " + file.timestamp + "</span></p>" +
-                        "</div>" +
-                        "</a>"
+                        "</div>"
                     );
                 });
             }
